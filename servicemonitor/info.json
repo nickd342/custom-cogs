@@ -1,7 +1,7 @@
 {
   "author": ["Yaboi"],
   "description": "Monitor multiple service statuses and post updates to a Discord channel",
-  "install_msg": "Thanks for installing! Use [p]monitor to configure.",
+  "install_msg": "Thanks for installing! Use [p]monitor to configure. Make sure to run [p]load servicemonitor first.",
   "short": "Service status monitor",
   "tags": ["monitor", "status", "uptime"],
   "type": "COG",
