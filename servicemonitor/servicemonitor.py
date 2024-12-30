@@ -3,6 +3,8 @@ import discord
 import aiohttp
 import asyncio
 from datetime import datetime
+from urllib.parse import urlparse
+import re
 
 class ServiceMonitor(commands.Cog):
     
@@ -102,6 +104,24 @@ class ServiceMonitor(commands.Cog):
 
     @monitor.command(name="add")
     async def add_service(self, ctx, name: str, url: str):
+        # Validate URL format
+        try:
+            result = urlparse(url)
+            if not all([result.scheme, result.netloc]):
+                raise ValueError
+            if result.scheme not in ['http', 'https']:
+                raise ValueError
+        except ValueError:
+            embed = discord.Embed(description="Invalid URL format. Must start with http:// or https://", color=discord.Color.red())
+            await ctx.send(embed=embed, delete_after=10)
+            return
+
+        # Validate service name (alphanumeric and underscores only)
+        if not re.match("^[a-zA-Z0-9_]+$", name):
+            embed = discord.Embed(description="Service name must contain only letters, numbers, and underscores", color=discord.Color.red())
+            await ctx.send(embed=embed, delete_after=10)
+            return
+        
         async with self.config.services() as services:
             services[name] = url
         embed = discord.Embed(description=f"Added service: {name}", color=discord.Color.green())
