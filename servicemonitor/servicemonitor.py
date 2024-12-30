@@ -5,7 +5,6 @@ import asyncio
 from datetime import datetime
 
 class ServiceMonitor(commands.Cog):
-    """Monitor web services and display their status in Discord"""
     
     def __init__(self, bot):
         self.bot = bot
@@ -46,7 +45,6 @@ class ServiceMonitor(commands.Cog):
         return embed
 
     async def check_services(self):
-        """Check status of all configured services and update status message"""
         while True:
             channel_id = await self.config.channel_id()
             message_id = await self.config.message_id()
@@ -100,12 +98,10 @@ class ServiceMonitor(commands.Cog):
     @commands.group()
     @commands.admin_or_permissions(administrator=True)
     async def monitor(self, ctx):
-        """Configure service monitoring"""
         pass
 
     @monitor.command(name="add")
     async def add_service(self, ctx, name: str, url: str):
-        """Add a service to monitor"""
         async with self.config.services() as services:
             services[name] = url
         embed = discord.Embed(description=f"Added service: {name}", color=discord.Color.green())
@@ -114,7 +110,6 @@ class ServiceMonitor(commands.Cog):
 
     @monitor.command(name="remove")
     async def remove_service(self, ctx, name: str):
-        """Remove a service from monitoring"""
         async with self.config.services() as services:
             if name in services:
                 del services[name]
@@ -127,7 +122,6 @@ class ServiceMonitor(commands.Cog):
 
     @monitor.command(name="list")
     async def list_services(self, ctx):
-        """List monitored services"""
         services = await self.config.services()
         if not services:
             embed = discord.Embed(
@@ -157,7 +151,6 @@ class ServiceMonitor(commands.Cog):
 
     @monitor.command()
     async def interval(self, ctx, seconds: int):
-        """Set check interval in seconds (minimum 60)"""
         if seconds < 60:
             embed = discord.Embed(description="Interval must be at least 60 seconds", color=discord.Color.red())
             await ctx.send(embed=embed, delete_after=10)
