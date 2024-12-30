@@ -1,10 +1,10 @@
 # Service Monitor
 
-A powerful yet simple Discord bot cog that helps you monitor your services and websites. Whether you're running a home server, managing multiple websites, or just want to keep an eye on your favorite services, this cog will notify you when something goes down or comes back online.
+A simple Discord Redbot (V3) cog that helps you monitor your services and websites. Whether you're running a home server, managing multiple websites, or just want to keep an eye on your favorite services, this cog will display the status of multiple services using an embedded discord message.
 
 ## Features
 
-This cog continuously monitors your specified services and provides real-time status updates in your designated Discord channel. Each status update includes:
+This cog monitors your specified services at a set interval and provides status updates in your designated Discord channel. Each status update includes:
 
 - A timestamp of when the check was performed
 - Clear visual indicators: 🟢 for online services and 🔴 for offline ones
@@ -12,7 +12,9 @@ This cog continuously monitors your specified services and provides real-time st
 
 ## Installation
 
-To add this cog to your Red Discord bot, follow these steps:
+To add this cog to your Discord Redbot, follow these steps:
+
+Pre-requisite: the downloader cog must be loaded and you must have predefined your storage/install paths
 
 1. Add the repository to your bot:
 
@@ -34,9 +36,9 @@ To add this cog to your Red Discord bot, follow these steps:
 
 ## Setting Up Your First Monitor
 
-Getting started is straightforward. Here's a complete example of setting up monitoring for an Emby server:
+Here's a complete example of setting up monitoring for an Emby server:
 
-1. First, create a dedicated channel in your Discord server for status updates. This helps keep your monitoring separate from regular chat.
+1. First, create a dedicated channel in your Discord server for status updates.
 
 2. Enable Developer Mode in Discord:
 
@@ -59,7 +61,7 @@ Getting started is straightforward. Here's a complete example of setting up moni
 [p]monitor interval 300
 
 # Add your first service
-[p]monitor add google https://google.com
+[p]monitor add emby https://myembyserver.com
 ```
 
 ## Command Reference
@@ -81,14 +83,6 @@ Remove a service from monitoring. Use the same name you used when adding the ser
 `[p]monitor list`
 View all currently monitored services and their URLs. Useful for checking your current configuration.
 
-## Best Practices
-
-- Create a dedicated channel for monitoring to avoid cluttering other channels
-- Use meaningful names for your services to easily identify them in status messages
-- Set an appropriate check interval - too frequent checks might cause unnecessary load
-- Ensure your bot has proper permissions in the status channel
-- Use secure URLs (https://) when possible
-
 ## Troubleshooting
 
 If you're not seeing status updates:
@@ -97,6 +91,8 @@ If you're not seeing status updates:
 2. Check that you've set a valid channel ID
 3. Ensure at least one service is added to the monitoring list
 4. Confirm your check interval is set appropriately
+5. Complete the pre-requisites
+6. As a last resort, uninstall/remove the cog and then reinstall it.
 
 ## Support
 
