@@ -19,7 +19,7 @@ Pre-requisite: the downloader cog must be loaded and you must have predefined yo
 1. Add the repository to your bot:
 
 ```bash
-[p]repo add servicemonitor https://github.com/nickd342/custom-cogs/tree/main/servicemonitor
+[p]repo add servicemonitor https://github.com/nickd342/custom-cogs
 ```
 
 2. Install the cog:
