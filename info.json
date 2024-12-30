@@ -1,0 +1,9 @@
+{
+  "author": ["Yaboi"],
+  "description": "Monitor multiple service statuses and post updates to a Discord channel",
+  "install_msg": "Thanks for installing! Use [p]monitor to configure.",
+  "short": "Service status monitor",
+  "tags": ["monitor", "status", "uptime"],
+  "type": "COG",
+  "end_user_data_statement": "This cog does not store any user data."
+}
