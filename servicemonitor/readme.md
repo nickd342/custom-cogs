@@ -17,7 +17,7 @@ To add this cog to your Red Discord bot, follow these steps:
 1. Add the repository to your bot:
 
 ```bash
-[p]repo add servicemonitor [your-repo-url]
+[p]repo add servicemonitor https://github.com/nickd342/custom-cogs/tree/main/servicemonitor
 ```
 
 2. Install the cog:
@@ -59,7 +59,7 @@ Getting started is straightforward. Here's a complete example of setting up moni
 [p]monitor interval 300
 
 # Add your first service
-[p]monitor add emby http://emby.example.com
+[p]monitor add google https://google.com
 ```
 
 ## Command Reference
